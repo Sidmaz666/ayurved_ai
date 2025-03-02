@@ -1,13 +1,14 @@
 const express = require("express");
 const Together = require("together-ai");
 const cors = require("cors");
+const path = require("path");
 require("dotenv").config();
 
 const app = express();
 
 app.use(cors());
 app.use(express.json());
-app.use(express.static("public"));
+app.use(express.static(path.join("public")));
 
 const PORT = process.env.PORT || 3000;
 const HOST = process.env.HOST || "localhost";
@@ -54,7 +55,7 @@ async function generateResponse(prompt) {
 }
 
 app.get("/", (_, res) => {
-  res.sendFile(__dirname + "/index.html");
+  res.sendFile(path.join(__dirname, "public", "index.html"));
 });
 
 app.get("/health", (_, res) => {
