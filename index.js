@@ -10,7 +10,7 @@ app.use(express.json());
 app.use(express.static("public"));
 
 const PORT = process.env.PORT || 3000;
-const HOST = process.env.HOST || "0.0.0.0";
+const HOST = process.env.HOST || "localhost";
 const togetherClient = new Together({
   apiKey: process.env.API_KEY,
 });
@@ -86,7 +86,7 @@ app.post("/api", async (req, res) => {
 });
 
 app.listen(PORT, () => {
-  console.log(`http://${HOST}:${PORT}`);
+  console.log(`${HOST}:${PORT}`);
 });
 
 module.exports = app;
